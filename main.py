@@ -1,16 +1,17 @@
-import os
-from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
+from telegram import Update
+import os
 
-# Token environment variable se lo
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.getenv("BOT_TOKEN")  # Railway ke env variable se token lega
 
-# Start command function
+# /start command
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Hello! ✅ Your bot is working.")
+    await update.message.reply_text("👋 Hello! DailyEarnBot abhi live hai ✅")
 
-# Main function
-if __name__ == "__main__":
+def main():
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.run_polling()
+
+if __name__ == "__main__":
+    main()
